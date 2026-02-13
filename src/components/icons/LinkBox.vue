@@ -17,8 +17,10 @@ const props = defineProps({
 
 <template>
     <div class="social">
-        <a :href="props.socialMediaLink" target="_blank">
-            <img v-if="props.socialMediaImage" :src="props.socialMediaImage"/>
+        <a :href="props.socialMediaLink" target="_blank" class="social">
+            <div class="logo">
+                <img v-if="props.socialMediaImage" :src="props.socialMediaImage"/>
+            </div>
             <p> {{ props.text }} </p>
         </a>
     </div>
@@ -26,29 +28,49 @@ const props = defineProps({
 
 <style scoped>
 .social {
-    background-color: white;
-    border: 2px solid black;
-    width: 100%;
-
+    border: 1px solid black;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .social a {
+    background-color: var(--color-background-soft);
     display: flex;
-    align-items: center;      /* centre verticalement */
-    justify-content: center;  /* centre horizontalement */
-    gap: 10px;                /* espace image / texte */
-    width: 100%;
-    height: 100%;
+    align-items: center;      
+    justify-content: center;
     text-decoration: none;
+    color: var(--vt-c-text-dark-2);
+    height: 100%;
+}
+
+.social a:hover {
+    background-color: var(--color-border-hover);
+}
+
+.logo {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.logo img {
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
+    object-fit: contain;
 }
 
 .social a p {
-    font-size: 22px;      /* texte plus grand */
-    font-weight: 600;     /* un peu plus lisible */
-    margin: 0;            /* enlève l’espace par défaut du <p> */
+    font-size: 22px;      
+    font-weight: 600;     
+    margin: 0;            
     text-align: center;
 }
 
