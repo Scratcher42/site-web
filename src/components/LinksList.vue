@@ -1,5 +1,5 @@
 <script setup>
-import { getSocialMedias } from '../../services/socialMediasService';
+import { getSocialMedias } from '@/services/socialMediasService';
 import { ref, onMounted } from 'vue';
 import LinkBox from './LinkBox.vue';
 
@@ -7,17 +7,18 @@ const linkList = ref([]);
 
 onMounted(() => {
     linkList.value = getSocialMedias()
-    console.log(linkList.value)
 });
 </script>
 
 <template>
+    <h2> Mes liens </h2>
     <div class="main">
         <div class="links-grid">
             <LinkBox v-for="link in linkList"
                     :key="link.socialMediaLink"
                     :socialMediaImage="link.socialMediaImage"
                     :socialMediaLink="link.socialMediaLink"
+                    :color="link.color"
                     :text="link.text"/>
         </div>
     </div>
