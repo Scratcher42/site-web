@@ -36,6 +36,31 @@
   --section-gap: 160px;
 }
 
+/* Friendly alias variables (easier, project-wide) */
+:root {
+  /* layout */
+  --app-max-width: 1280px;
+  --app-padding: 2rem;
+  --layout-gutter: 2rem;
+
+  /* colors (alias to existing semantic vars) */
+  --bg: var(--color-background);
+  --bg-soft: var(--color-background-soft);
+  --bg-mute: var(--color-background-mute);
+
+  --text: var(--color-text);
+  --heading: var(--color-heading);
+
+  --muted-border: var(--color-border);
+  --muted-border-hover: var(--color-border-hover);
+
+  /* link / accent */
+  --link-color: hsla(160, 100%, 37%, 1);
+
+  /* spacing */
+  --section-gap-sm: 80px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);

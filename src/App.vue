@@ -19,9 +19,7 @@ window.addEventListener("click", unlockAudio)
 </script>
 
 <template>
-  <header>
-    <NavBar class="nav"/>
-  </header>
+  <NavBar/>
   <div class="main">
     <RouterView/>
   </div>
@@ -39,31 +37,45 @@ body {
   min-height: 100vh;
 }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--color-background);
+/* Add padding at bottom on mobile to account for fixed navbar */
+@media (max-width: 1023px) {
+  #app {
+    padding-bottom: 70px;
+  }
+}
+
+.card {
+  /* Layout */
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-}
-
-.main,
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
-}
-</style>
+  height: 100%;
+  gap: 14px;
+  padding: 18px;
+  min-width: 0;
+  box-sizing: border-box;
 
-<style scoped>
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  /* Positioning */
+  position: relative;
+
+  /* Visual */
+  background: transparent;
+  border-radius: 16px;
+  color: var(--vt-c-text-dark-2);
+  text-decoration: none;
+
+  /* Effects */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: 0.25s ease;
 }
 
 .main {
   flex: 1;
+  margin: 0 auto;
+  width: 100%;
+  max-width: none; /* No limit */
 }
 </style>

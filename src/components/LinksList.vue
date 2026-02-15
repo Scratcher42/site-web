@@ -26,16 +26,49 @@ onMounted(() => {
 
 <style scoped>
 .main {
-    height: 100%;
+  height: 100%;
 }
 
 .links-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 300px);
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    box-sizing: border-box;
-    scrollbar-gutter: stable;
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column by default (mobile-first) */
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  align-items: start;
+  justify-content: center;
+  box-sizing: border-box;
+  scrollbar-gutter: stable;
+}
+
+/* Small phones → keep 1 column but tighten spacing */
+@media (max-width: 480px) {
+  .links-grid {
+    gap: 12px;
+    padding: 12px;
+  }
+}
+
+/* Small tablets/landscape phones → 2 columns */
+@media (min-width: 600px) {
+  .links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium screens → 3 columns */
+@media (min-width: 900px) {
+  .links-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Large screens/desktop → 4 columns */
+@media (min-width: 1200px) {
+  .links-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
 }
 </style>

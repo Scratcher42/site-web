@@ -30,7 +30,7 @@ const playHover = () => {
 </script>
 
 <template>
-    <a class="social"  :href="props.socialMediaLink" target="_blank" :style="{ '--brand': props.color }" @mouseenter="playHover">
+    <a class="card"  :href="props.socialMediaLink" target="_blank" :style="{ '--brand': props.color }" @mouseenter="playHover">
         <div class="logo">
             <img v-if="props.socialMediaImage" :src="props.socialMediaImage"/>
         </div>
@@ -39,58 +39,56 @@ const playHover = () => {
 </template>
 
 <style scoped>
-.social {
-  background: transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  transition: .25s ease;
-  position: relative;
-  display: flex;
-    align-items: center;      
-    justify-content: center;
-    text-decoration: none;
-    color: var(--vt-c-text-dark-2);
-    height: 100%;
-    flex-direction: column;
-    gap: 14px;
-    padding: 18px;
-}
 
-.social:hover {
+.card:hover {
   transform: scale(1.06);
   background: color-mix(in srgb, var(--brand) 30%, transparent);
-    box-shadow: 
+  box-shadow:
     inset 0 0 10px color-mix(in srgb, var(--brand) 0%, transparent),
     0 0 100px color-mix(in srgb, var(--brand) 70%, transparent);
-    z-index: 5;
+  z-index: 5;
 }
 
 .logo {
-    width: 300px;
-    height: 300px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    padding: 20px;
-    box-sizing: border-box;
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+
+  /* Visual */
+  overflow: hidden;
+  border-radius: 18px;
 }
 
 .logo img {
-    max-width: 90%;
-    max-height: 90%;
-    display: block;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
 }
 
-.social p {
-    font-size: 22px;      
-    font-weight: 600;     
-    margin: 0;            
-    text-align: center;
+.card p {
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .logo {
+    padding: 12px;
+    border-radius: 12px;
+  }
 }
 </style>
