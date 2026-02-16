@@ -1,19 +1,28 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { randomColor } from '@/services/randomColorProvider';
 
-// Generate a random brand color on page load (HSL for pleasant saturation)
-function randomBrand() {
-  const h = Math.floor(Math.random() * 360);
-  return `hsl(${h} 70% 45%)`;
+const colorToRender = ref(randomColor());
+
+function changeColor() {
+  colorToRender.value = randomColor();
 }
 
-const colorToRender = ref(randomBrand());
+const cardAttrs = computed(() => ({
+  style: { '--color-to-render': colorToRender.value },
+  tabindex: 0,
+}));
+
+const cardListeners = {
+  mouseenter: changeColor,
+  click: changeColor,
+};
 </script>
 
 <template>
     <h2>Accueil</h2>
-    <div class="card" :style="{ '--color-to-render': colorToRender }">
-      <img src="/src/images/lightX(5).png" alt="Photo de couverture" style="width: 100%; height: auto; border-radius: 8px;"/>
+    <article class="card" v-bind="cardAttrs" v-on="cardListeners">
+      <h3>Présentation du site</h3>
         <div class="text">
             <p>Bienvenue sur le site de ma chaîne ! Ici, tu pourras me connaître autrement que sur YouTube.
                 N'hésite pas à aller faire un tour sur ma page Linktree pour découvrir tous mes réseaux sociaux et autres liens utiles !
@@ -21,55 +30,21 @@ const colorToRender = ref(randomBrand());
             <p>L'image de fond est fait par <a href="https://www.youtube.com/@spuraxe" target="blank_">Spuraxe</a> ! Go t'abonner</p>
             <p>Ce site est en beta : dites-moi ce qui ne vas et j'ajusterai en fonction...</p>
         </div>
-    </div>
+        <img src="/src/images/lightX(5).png" alt="Photo de couverture" style="width: 100%; height: auto; border-radius: 8px;"/>
+    </article>
+    <article class="card" v-bind="cardAttrs" v-on="cardListeners">
+      <h3>Ce que je fais</h3>
+      <div class="text">
+        <p>Je fais des vidéos dédiées aux jeux Supercell, de gaming sur Youtube.</p>
+        <p>Et bientôt, des vidéos sur la vulgarisation des notions en informatique.</p>
+      </div>
+    </article>
 </template>
 
 <style scoped>
-img {
-  max-width: 200px;
-}
-
-.card {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  padding: 12px;
-  border-radius: 12px;
-  box-sizing: border-box;
-  background: transparent;
-  transition: transform 0.25s ease;
-}
-
-/* Hover effect should not scale content (no transform) */
-.card:hover {
-    transform: scale(1.02);
-  background: color-mix(in srgb, var(--color-to-render) 30%, transparent);
-  box-shadow:
-    inset 0 0 10px color-mix(in srgb, var(--color-to-render) 0%, transparent),
-    0 0 100px color-mix(in srgb, var(--color-to-render) 70%, transparent);
-  z-index: 5;
-}
-
-.card img {
-  max-width: 300px;
-  height: auto;
-  display: block;
-}
-
-.text {
-  color: var(--color-text);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Make links on this page match the site's text color */
-.text a {
-  color: var(--color-text);
-  text-decoration: underline;
-}
-
-.text a:visited {
-  color: var(--color-text);
+article {
+  width: 100%;
+  min-width: 100%;
+  margin: 2rem 0;
 }
 </style>

@@ -1,5 +1,7 @@
 <script setup>
 import hoverSound from "@/sounds/lily_atk_01.ogg"
+import { defineProps } from 'vue';
+
 const props = defineProps({
     socialMediaImage:{
         type: String,
@@ -30,7 +32,7 @@ const playHover = () => {
 </script>
 
 <template>
-    <a class="card"  :href="props.socialMediaLink" target="_blank" :style="{ '--brand': props.color }" @mouseenter="playHover">
+    <a class="card"  :href="props.socialMediaLink" target="_blank" :style="{ '--color-to-render': props.color }" @mouseenter="playHover">
         <div class="logo">
             <img v-if="props.socialMediaImage" :src="props.socialMediaImage"/>
         </div>
@@ -39,16 +41,6 @@ const playHover = () => {
 </template>
 
 <style scoped>
-
-.card:hover {
-  transform: scale(1.06);
-  background: color-mix(in srgb, var(--brand) 30%, transparent);
-  box-shadow:
-    inset 0 0 10px color-mix(in srgb, var(--brand) 0%, transparent),
-    0 0 100px color-mix(in srgb, var(--brand) 70%, transparent);
-  z-index: 5;
-}
-
 .logo {
   /* Layout */
   display: flex;
@@ -71,6 +63,11 @@ const playHover = () => {
   height: 100%;
   display: block;
   object-fit: contain;
+}
+
+.card {
+  flex-direction: column;
+  align-items: center;
 }
 
 .card p {

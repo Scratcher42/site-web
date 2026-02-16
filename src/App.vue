@@ -1,6 +1,27 @@
 <script setup>
 import NavBar from './components/NavBar.vue';
 import hoverSound from "@/sounds/lily_atk_01.ogg";
+import { ref, computed } from 'vue';
+import { randomColor } from '@/services/randomColorProvider';
+
+// Generate a random brand color on page load (HSL for pleasant saturation)
+
+const colorToRender = ref(randomColor());
+
+// Handler to update the color (called on hover / focus)
+function changeColor() {
+  colorToRender.value = randomColor();
+}
+
+const cardAttrs = computed(() => ({
+  style: { '--color-to-render': colorToRender.value },
+  tabindex: 0,
+}));
+
+const cardListeners = {
+  mouseenter: changeColor,
+  click: changeColor,
+};
 
 let unlocked = false
 let lastPlay = 0
@@ -42,34 +63,6 @@ body {
   #app {
     padding-bottom: 70px;
   }
-}
-
-.card {
-  /* Layout */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  gap: 14px;
-  padding: 18px;
-  min-width: 0;
-  box-sizing: border-box;
-
-  /* Positioning */
-  position: relative;
-
-  /* Visual */
-  background: transparent;
-  border-radius: 16px;
-  color: var(--vt-c-text-dark-2);
-  text-decoration: none;
-
-  /* Effects */
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  transition: 0.25s ease;
 }
 
 .main {

@@ -3,7 +3,7 @@
 /* App container (uses friendly variables from base.css) */
 #app {
   max-width: var(--app-max-width);
-  margin: 0 auto;
+  margin: 0;
   padding: var(--app-padding);
   font-weight: normal;
 }
@@ -17,16 +17,22 @@ a,
   padding: 3px;
 }
 
-/* Interactive link styles (when hover is supported) */
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+h2 {
+  color: var(--color-heading);
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+}
+
+h3 {
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 /* Tablet and larger screens */
 @media (min-width: 1024px) {
   body {
+    padding-top: 5rem;
     display: flex;
     place-items: center;
   }
@@ -34,18 +40,79 @@ a,
   #app {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0 var(--layout-gutter);
+    padding: 0;
+    width: 100%;
   }
 }
 
 /* Mobile and small screens */
 @media (max-width: 600px) {
   #app {
-    padding: 1rem;
+    padding: 1rem 0;
     max-width: 100%;
   }
 
   header nav {
     padding: 0 8px;
   }
+}
+
+.card {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  gap: 14px;
+  padding: 18px;
+  min-width: 0;
+  box-sizing: border-box;
+
+  /* Positioning */
+  position: relative;
+
+  /* Visual */
+  background: transparent;
+  border-radius: 16px;
+  color: var(--vt-c-text-2);
+  text-decoration: none;
+
+  /* Effects */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: transform 0.25s ease;
+}
+
+/* Hover effect should not scale content (no transform) */
+.card:hover {
+    transform: scale(1.02);
+  background: color-mix(in srgb, var(--color-to-render) 30%, transparent);
+  box-shadow:
+    inset 0 0 10px color-mix(in srgb, var(--color-to-render) 0%, transparent),
+    0 0 100px color-mix(in srgb, var(--color-to-render) 70%, transparent);
+  z-index: 5;
+}
+
+.card img {
+  max-width: 200px;
+  height: auto;
+  display: block;
+  align-self: center;
+}
+
+.text {
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+/* Make links on this page match the site's text color */
+.text a {
+  color: var(--color-text);
+  text-decoration: underline;
 }

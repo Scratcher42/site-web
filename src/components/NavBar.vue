@@ -16,23 +16,22 @@ nav {
   justify-content: center;
   flex-wrap: nowrap;
   height: 70px;
-  width: 100%;
 
-  /* Positioning */
+  /* Positioning - will be overridden by media queries */
   position: fixed;
-  bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
 
   /* Visual */
   background: color-mix(in srgb, var(--color-background-mute) 60%, transparent 40%);
-  border-radius: 0;
+  border-radius: 13px;
 
   /* Effects */
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
 }
-/* Link styles */
+
 /* Link styles */
 nav a {
   background: transparent;
@@ -46,12 +45,6 @@ nav a {
   opacity: 0.95;
   font-size: clamp(16px, 2.5vw, 20px);
   cursor: pointer;
-}
-
-nav a.router-link-active :hover {
-  color: #ffffff;
-  font-weight: 600;
-  opacity: 1;
 }
 
 /* Active/current route: white */
@@ -71,13 +64,21 @@ nav a:focus {
   outline: none;
 }
 
-/* Desktop: sticky at top, full width */
+/* Desktop: fixed at top */
 @media (min-width: 1024px) {
   nav {
-    position: sticky;
-    top: 0;
-    bottom: auto;
-    border-radius: 16px;
+    top: 12px;
+    width: calc(100% - 2 * var(--app-padding));
+    max-width: calc(100% - 24px);
+  }
+}
+
+/* Mobile: fixed at bottom */
+@media (max-width: 1023px) {
+  nav {
+    bottom: 12px;
+    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
   }
 }
 </style>
