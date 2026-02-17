@@ -5,6 +5,9 @@ import Home from './components/Home.vue'
 const routes = [
   { name: 'home', path: '/', component: Home },
   { name: 'linktree', path: '/linktree', component: LinksList },
+  { name: 'coupdecoeur', path: '/coupdecoeur', component: () => import('./components/CoupCoeur.vue') },
+  { name: 'legal', path: '/mentions-legales', component: () => import('./components/Legal.vue') },
+  { name: 'changelogs', path: '/changelogs', component: () => import('./components/Changelogs.vue') },
   { name: 'not-found', path: '/:pathMatch(.*)*', component: () => import('./components/NotFound.vue') },
 ];
 

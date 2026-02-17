@@ -34,6 +34,12 @@ export function getSocialMedias() {
         "socialMediaLink": "https://x.com/Scratcher42",
         "text": "Scratcher42",
         "color": "#000000"
+    },
+    {
+        "socialMediaImage": "https://www.freeiconspng.com/uploads/free-download-twitch-logo-png-images-9.png",
+        "socialMediaLink": "https://twitch.tv/scratcher42",
+        "text": "Scratcher42",
+        "color": "#9146FF"
     }
 ];
 }

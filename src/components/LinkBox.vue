@@ -1,6 +1,5 @@
 <script setup>
-import hoverSound from "@/sounds/lily_atk_01.ogg"
-import { defineProps } from 'vue';
+import hoverSound from "@/sounds/lily_atk_01.ogg";
 
 const props = defineProps({
     socialMediaImage:{

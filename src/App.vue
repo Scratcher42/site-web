@@ -1,5 +1,6 @@
 <script setup>
 import NavBar from './components/NavBar.vue';
+import MyFooter from './components/MyFooter.vue';
 import hoverSound from "@/sounds/lily_atk_01.ogg";
 import { ref, computed } from 'vue';
 import { randomColor } from '@/services/randomColorProvider';
@@ -44,6 +45,7 @@ window.addEventListener("click", unlockAudio)
   <div class="main">
     <RouterView/>
   </div>
+  <MyFooter/>
 </template>
 
 <style>
@@ -55,7 +57,6 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 /* Add padding at bottom on mobile to account for fixed navbar */
@@ -69,6 +70,7 @@ body {
   flex: 1;
   margin: 0 auto;
   width: 100%;
-  max-width: none; /* No limit */
+  max-width: none;
+  padding: 2rem;
 }
 </style>

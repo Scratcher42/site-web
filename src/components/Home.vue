@@ -36,7 +36,14 @@ const cardListeners = {
       <h3>Ce que je fais</h3>
       <div class="text">
         <p>Je fais des vidéos dédiées aux jeux Supercell, de gaming sur Youtube.</p>
-        <p>Et bientôt, des vidéos sur la vulgarisation des notions en informatique.</p>
+        <p>Et bientôt, des vidéos sur la vulgarisation des notions en informatique et de l'humour (style podcast).</p>
+      </div>
+    </article>
+    <article class="card" v-bind="cardAttrs" v-on="cardListeners">
+      <h3>Ce que j'aime</h3>
+      <div class="text">
+        <p>J'aime les jeux vidéo (je ne sais pas si ça se voit)</p>
+        <p>J'aime aussi les BD, les films et les séries.</p>
       </div>
     </article>
 </template>
@@ -45,6 +52,5 @@ const cardListeners = {
 article {
   width: 100%;
   min-width: 100%;
-  margin: 2rem 0;
 }
 </style>

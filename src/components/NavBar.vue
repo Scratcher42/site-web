@@ -5,6 +5,8 @@
     <nav>
         <router-link to="/">Accueil</router-link>
         <router-link to="/linktree">Link tree</router-link>
+        <router-link to="/coupdecoeur">Coups de coeur</router-link>
+        <router-link to="/changelogs">Changelogs</router-link>
     </nav>
 </template>
 
