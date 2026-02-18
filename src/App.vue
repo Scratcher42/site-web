@@ -1,34 +1,34 @@
 <script setup>
 import NavBar from './components/NavBar.vue';
 import MyFooter from './components/MyFooter.vue';
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useRouter } from "vue-router"
+import { onMounted, onBeforeUnmount, nextTick, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
-const router = useRouter()
+const route = useRoute()
 
 function updateColors() {
   document.querySelectorAll('.card, h1, h2').forEach(el => {
     const rect = el.getBoundingClientRect()
     const elMiddle = rect.top + rect.height / 2
     const ratio = elMiddle / window.innerHeight
-
-    // t = 0 en haut (indigo), t = 1 en bas (blanc)
-    // la transition commence à 35% et finit à 75% du viewport
     const t = Math.max(0, Math.min(1, (ratio - 0.35) / (0.75 - 0.35)))
-
     el.style.setProperty('--scroll-t', t)
   })
 }
 
-const scrollTarget = document.querySelector('.main') ?? window
-
-onMounted(() => {
-  scrollTarget.addEventListener('scroll', updateColors, { passive: true })
+watch(route, async () => {
+  await nextTick()
   updateColors()
 })
 
+onMounted(async () => {
+  await nextTick()
+  updateColors()
+  window.addEventListener('scroll', updateColors, { passive: true })
+})
+
 onBeforeUnmount(() => {
-  scrollTarget.removeEventListener('scroll', updateColors)
+  window.removeEventListener('scroll', updateColors)
 })
 </script>
 
