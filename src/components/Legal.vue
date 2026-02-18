@@ -23,7 +23,8 @@ const cardListeners = {
     <article class="card" v-bind="cardAttrs" v-on="cardListeners">
       <h3>Droits d'auteur</h3>
         <div class="text">
-            <p>Les droits d'auteur de base de ce site appartiennent à Scratche42 (loi sur le droit d'auteur). Toute reproduction non autorisée est interdite.</p>
+            <p>Les droits d'auteur de base de ce site appartiennent à Scratche42 (loi sur le droit d'auteur). Il s'applique sur le texte contenu sur ce site notamment. Toute reproduction sans modification est interdite.</p>
+            <p>Cependant, le <a href="https://github.com/Scratcher42/site-web" target="_blank">code source est disponible</a>. En cas de republication avec modification du contenu, veuillez mentionner le site et son auteur.</p>
             <p>Toute ressemblance à un autre site ou application serait purement fortuite.</p>
         </div>
         <div class="text">

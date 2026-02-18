@@ -1,43 +1,35 @@
 <script setup>
 import NavBar from './components/NavBar.vue';
 import MyFooter from './components/MyFooter.vue';
-import hoverSound from "@/sounds/lily_atk_01.ogg";
-import { ref, computed } from 'vue';
-import { randomColor } from '@/services/randomColorProvider';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRouter } from "vue-router"
 
-// Generate a random brand color on page load (HSL for pleasant saturation)
+const router = useRouter()
 
-const colorToRender = ref(randomColor());
+function updateColors() {
+  document.querySelectorAll('.card, h1, h2').forEach(el => {
+    const rect = el.getBoundingClientRect()
+    const elMiddle = rect.top + rect.height / 2
+    const ratio = elMiddle / window.innerHeight
 
-// Handler to update the color (called on hover / focus)
-function changeColor() {
-  colorToRender.value = randomColor();
+    // t = 0 en haut (indigo), t = 1 en bas (blanc)
+    // la transition commence à 35% et finit à 75% du viewport
+    const t = Math.max(0, Math.min(1, (ratio - 0.35) / (0.75 - 0.35)))
+
+    el.style.setProperty('--scroll-t', t)
+  })
 }
 
-const cardAttrs = computed(() => ({
-  style: { '--color-to-render': colorToRender.value },
-  tabindex: 0,
-}));
+const scrollTarget = document.querySelector('.main') ?? window
 
-const cardListeners = {
-  mouseenter: changeColor,
-  click: changeColor,
-};
+onMounted(() => {
+  scrollTarget.addEventListener('scroll', updateColors, { passive: true })
+  updateColors()
+})
 
-let unlocked = false
-let lastPlay = 0
-
-const unlockAudio = () => {
-  const now = Date.now()
-  if (now - lastPlay < 120) return
-  lastPlay = now
-  audio.currentTime = 0
-  audio.volume = 0.25
-  audio.play().catch(() => {})
-}
-
-window.addEventListener("click", unlockAudio)
-
+onBeforeUnmount(() => {
+  scrollTarget.removeEventListener('scroll', updateColors)
+})
 </script>
 
 <template>

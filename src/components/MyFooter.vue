@@ -6,7 +6,8 @@ import { router } from '../route';
 <template>
     <footer>
         <p>Site personnel de Scratche42, vidéaste gaming et passionné d'informatique.</p>
-        <router-link :to="{ name: 'legal' }">Mentions légales</router-link>
+        <router-link :to="{ name: 'legal' }">Mentions légales</router-link> |
+        <a href="https://github.com/Scratcher42/site-web" target="_blank">Code source</a>
     </footer>
 </template>
 

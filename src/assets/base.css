@@ -49,6 +49,11 @@
   --section-gap-sm: 80px;
 }
 
+:root {
+  --card-text-normal: var(--vt-c-indigo);
+  --card-text-contrast: var(--vt-c-white);
+}
+
 *,
 *::before,
 *::after {

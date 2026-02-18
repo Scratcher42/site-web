@@ -18,13 +18,12 @@ a,
 }
 
 h2 {
-  color: var(--color-heading);
+  color: var(--card-text-normal);
   margin-bottom: 0.75rem;
   font-weight: bold;
 }
 
 h3 {
-  color: var(--color-heading);
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
@@ -77,22 +76,26 @@ h3 {
   /* Visual */
   background: transparent;
   border-radius: 16px;
-  color: var(--vt-c-text-2);
+  color: color-mix(
+    in srgb,
+    var(--card-text-contrast) calc(var(--scroll-t) * 100%),
+    var(--card-text-normal)
+  );
   text-decoration: none;
 
   /* Effects */
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, color 0.25s ease;
 }
 
 /* Hover effect should not scale content (no transform) */
 .card:hover {
-    transform: scale(1.02);
-  background: color-mix(in srgb, var(--color-to-render) 30%, transparent);
+  transform: scale(1.02);
+  background: color-mix(in srgb, var(--color-to-render) 25%, transparent);
   box-shadow:
     inset 0 0 10px color-mix(in srgb, var(--color-to-render) 0%, transparent),
-    0 0 100px color-mix(in srgb, var(--color-to-render) 70%, transparent);
+    0 0 100px color-mix(in srgb, var(--color-to-render) 50%, transparent);
   z-index: 5;
 }
 
@@ -104,7 +107,6 @@ h3 {
 }
 
 .text {
-  color: var(--color-text);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -114,6 +116,5 @@ h3 {
 
 /* Make links on this page match the site's text color */
 .text a {
-  color: var(--color-text);
   text-decoration: underline;
 }
