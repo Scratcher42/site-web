@@ -26,6 +26,7 @@ const cardListeners = {
             <ul>
                 <li>Meilleure lisibilité (équilibrage toujours possible)</li>
                 <li>Équilibrage des couleurs</li>
+                <li>Fix du reload de la page provoquant une erreur 404 (normalement)</li>
             </ul>
         </div>
       </article>
