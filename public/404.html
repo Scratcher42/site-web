@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script>
+    const segment = 1; // IMPORTANT pour repo pages
+    const l = window.location;
+    const repo = '/site-web';
+    const redirect =
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      repo + '/?redirect=' +
+      encodeURIComponent(l.pathname.slice(repo.length) + l.search + l.hash);
+    window.location.replace(redirect);
+  </script>
+</head>
+<body></body>
+</html>
