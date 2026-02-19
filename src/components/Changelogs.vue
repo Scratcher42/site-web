@@ -26,7 +26,7 @@ const cardListeners = {
             <ul>
                 <li>Meilleure lisibilité du site (mobile notamment) :
                 <ul>
-                    <li>Le changement de couleur du texte se fait selon le placement de celui-ci et non celui du composnat</li>
+                    <li>Le changement de couleur du texte se fait selon le placement de celui-ci et non celui du composant</li>
                     <li>Le changement de couleur n'est plus progressif selon la position du composant, mais se fait sur la durée et par paliers (3)</li>
                     <li>Ajout d'un cadre autour les cards et augmentation de l'effet du flou</li>
                 </ul>  
