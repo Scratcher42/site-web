@@ -6,6 +6,10 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute()
 
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+}
+
 function updateColors() {
   const isMobile = window.innerWidth < 1024
   const thresholdMid = isMobile ? 0.35 : 0.40
@@ -34,6 +38,10 @@ function updateBackgroundScroll() {
 }
 
 onMounted(async () => {
+  if (isIOS()) {
+    document.body.style.backgroundSize = 'auto 100dvh'
+    document.body.style.backgroundAttachment = 'scroll'
+  }
   await nextTick()
   updateColors()
   updateBackgroundScroll()
@@ -76,10 +84,6 @@ body {
 @media (max-width: 1023px) {
   #app {
     padding-bottom: 70px;
-  }
-
-  body {
-    background-position: left center;
   }
 }
 
