@@ -29,6 +29,7 @@ function updateColors() {
 function updateBackgroundScroll() {
   if (window.innerWidth >= 1024) return
   const docHeight = document.documentElement.scrollHeight - window.innerHeight
+  if (docHeight <= 0) return
   const scrollProgress = window.scrollY / docHeight
   document.body.style.backgroundPositionX = `${scrollProgress * 100}%`
 }
@@ -76,6 +77,10 @@ body {
 @media (max-width: 1023px) {
   #app {
     padding-bottom: 70px;
+  }
+
+  body {
+    background-position: left center;
   }
 }
 

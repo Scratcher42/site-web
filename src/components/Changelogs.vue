@@ -21,6 +21,12 @@ const cardListeners = {
 <template>
     <h2>Changelogs</h2>
     <article class="card" v-bind="cardAttrs" v-on="cardListeners">
+      <h3>V 0.4.0.1 : 19/02/2026</h3>
+        <div class="text">
+            <p>Fix du scroll de l'image de fond sur iOS qui se comportait mal</p>
+        </div>
+    </article>
+    <article class="card" v-bind="cardAttrs" v-on="cardListeners">
       <h3>V 0.4 : 19/02/2026</h3>
         <div class="text">
             <ul>
