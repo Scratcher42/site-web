@@ -29,9 +29,8 @@ function updateColors() {
 function updateBackgroundScroll() {
   if (window.innerWidth >= 1024) return
   const docHeight = document.documentElement.scrollHeight - window.innerHeight
-  if (docHeight <= 0) return
-  const scrollProgress = window.scrollY / docHeight
-  document.body.style.backgroundPositionX = `${scrollProgress * 100}%`
+  const scrollProgress = docHeight > 0 ? window.scrollY / docHeight : 0
+  document.body.style.backgroundPosition = `${scrollProgress * 100}% center`
 }
 
 onMounted(async () => {
