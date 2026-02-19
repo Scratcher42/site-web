@@ -30,8 +30,8 @@ nav {
   border-radius: 13px;
 
   /* Effects */
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 /* Link styles */

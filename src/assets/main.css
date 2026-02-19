@@ -17,8 +17,12 @@ a,
   padding: 3px;
 }
 
+h1 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
 h2 {
-  color: var(--card-text-normal);
   margin-bottom: 0.75rem;
   font-weight: bold;
 }
@@ -75,18 +79,15 @@ h3 {
 
   /* Visual */
   background: transparent;
+  border: solid 1px var(--card-text-normal);
   border-radius: 16px;
-  color: color-mix(
-    in srgb,
-    var(--card-text-contrast) calc(var(--scroll-t) * 100%),
-    var(--card-text-normal)
-  );
+  color: unset;
   text-decoration: none;
 
   /* Effects */
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  transition: transform 0.25s ease, color 0.25s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, color 0.4s ease;
 }
 
 /* Hover effect should not scale content (no transform) */
@@ -117,4 +118,17 @@ h3 {
 /* Make links on this page match the site's text color */
 .text a {
   text-decoration: underline;
+}
+
+h1, h2, h3, p, a, span, li {
+  color: var(--card-text-normal);
+  transition: color 0.4s ease;
+}
+
+.mid-zone {
+  color: var(--card-text-mid); /* couleur intermédiaire */
+}
+
+.dark-zone {
+  color: var(--card-text-contrast) !important;
 }

@@ -12,28 +12,21 @@ onMounted(() => {
 
 <template>
     <h2> Mes liens </h2>
-    <div class="main">
-        <div class="links-grid">
-            <LinkBox v-for="link in linkList"
-                    :key="link.socialMediaLink"
-                    :socialMediaImage="link.socialMediaImage"
-                    :socialMediaLink="link.socialMediaLink"
-                    :color="link.color"
-                    :text="link.text"/>
+    <div class="links-grid">
+      <LinkBox v-for="link in linkList"
+            :key="link.socialMediaLink"
+            :socialMediaImage="link.socialMediaImage"
+            :socialMediaLink="link.socialMediaLink"
+            :color="link.color"
+            :text="link.text"/>
         </div>
-    </div>
 </template>
 
 <style scoped>
-.main {
-  height: 100%;
-}
-
 .links-grid {
   display: grid;
   grid-template-columns: 1fr; /* 1 column by default (mobile-first) */
   gap: 2rem;
-  padding: 2rem;
   width: 100%;
   align-items: start;
   justify-content: center;

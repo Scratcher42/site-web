@@ -19,5 +19,7 @@ footer {
   border-radius: 13px;
   color: var(--color-text);
   font-size: 14px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 </style>

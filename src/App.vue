@@ -7,28 +7,49 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 
 function updateColors() {
-  document.querySelectorAll('.card, h1, h2').forEach(el => {
+  const isMobile = window.innerWidth < 1024
+  const thresholdMid = isMobile ? 0.35 : 0.40
+  const thresholdDark = isMobile ? 0.6 : 0.6
+
+  document.querySelectorAll('h1, h2, h3, p, a, span, li').forEach(el => {
     const rect = el.getBoundingClientRect()
     const elMiddle = rect.top + rect.height / 2
     const ratio = elMiddle / window.innerHeight
-    const t = Math.max(0, Math.min(1, (ratio - 0.35) / (0.75 - 0.35)))
-    el.style.setProperty('--scroll-t', t)
+
+    el.classList.remove('mid-zone', 'dark-zone') // reset propre
+
+    if (ratio > thresholdDark) {
+      el.classList.add('dark-zone')
+    } else if (ratio > thresholdMid) {
+      el.classList.add('mid-zone')
+    }
   })
 }
 
-watch(route, async () => {
-  await nextTick()
-  updateColors()
-})
+function updateBackgroundScroll() {
+  if (window.innerWidth >= 1024) return
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight
+  const scrollProgress = window.scrollY / docHeight
+  document.body.style.backgroundPositionX = `${scrollProgress * 100}%`
+}
 
 onMounted(async () => {
   await nextTick()
   updateColors()
+  updateBackgroundScroll()
   window.addEventListener('scroll', updateColors, { passive: true })
+  window.addEventListener('scroll', updateBackgroundScroll, { passive: true })
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', updateColors)
+  window.removeEventListener('scroll', updateBackgroundScroll)
+})
+
+watch(route, async () => {
+  await nextTick()
+  updateColors()
+  updateBackgroundScroll()
 })
 </script>
 
@@ -43,7 +64,7 @@ onBeforeUnmount(() => {
 <style>
 body {
   margin: 0;
-  background: url("/src/images/PhotoGrid_Site_1770758216069.jpg") center / cover no-repeat fixed;
+  background: url("/src/images/PhotoGrid_Site_1770758216069.jpg") left center / cover no-repeat fixed;
 }
 
 #app {
@@ -63,6 +84,6 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: none;
-  padding: 2rem;
+  padding: 1rem;
 }
 </style>

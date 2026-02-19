@@ -24,7 +24,7 @@ const audio = new Audio(hoverSound);
 
 const playHover = () => {
   audio.currentTime = 0
-  audio.volume = 0.25
+  audio.volume = 0.1
   audio.play().catch(() => {})
 }
 
@@ -62,6 +62,9 @@ const playHover = () => {
   height: 100%;
   display: block;
   object-fit: contain;
+  border: solid 1px var(--color-to-render);
+  border-radius: 13px;
+  background-color: color-mix(in srgb, var(--color-to-render) 20%, transparent 80%);
 }
 
 .card {

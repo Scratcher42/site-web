@@ -51,6 +51,7 @@
 
 :root {
   --card-text-normal: var(--vt-c-indigo);
+  --card-text-mid: #8a9bb0;
   --card-text-contrast: var(--vt-c-white);
 }
 
