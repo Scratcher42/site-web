@@ -69,8 +69,12 @@ watch(route, async () => {
 body::before {
   content: '';
   position: fixed;
-  inset: 0;
+  top: calc(-1 * env(safe-area-inset-top, -200px));
+  bottom: calc(-1 * env(safe-area-inset-bottom, -200px));
+  left: 0;
+  right: 0;
   background: url("/src/images/PhotoGrid_Site_1770758216069.jpg") var(--bg-x, left center) / cover no-repeat;
+  transform: scale(1.1);
   z-index: -1;
 }
 

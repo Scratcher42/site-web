@@ -63,6 +63,10 @@
   font-weight: normal;
 }
 
+html {
+  background: var(--vt-c);
+}
+
 body {
   background: transparent;
   margin: 0;

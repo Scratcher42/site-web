@@ -1,13 +1,5 @@
 @import './base.css';
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: -10px; /* ← légère marge négative pour absorber les bords */
-  background: url("/src/images/PhotoGrid_Site_1770758216069.jpg") var(--bg-x, left center) / cover no-repeat;
-  z-index: -1;
-}
-
 /* App container (uses friendly variables from base.css) */
 #app {
   max-width: var(--app-max-width);
