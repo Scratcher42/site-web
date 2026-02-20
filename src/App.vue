@@ -34,13 +34,14 @@ function updateBackgroundScroll() {
   if (window.innerWidth >= 1024) return
   const docHeight = document.documentElement.scrollHeight - window.innerHeight
   const scrollProgress = docHeight > 0 ? window.scrollY / docHeight : 0
-  document.body.style.backgroundPosition = `${scrollProgress * 100}% center`
+  document.body.style.setProperty('--bg-x', `${scrollProgress * 100}%`)
 }
 
 onMounted(async () => {
   if (isIOS()) {
     document.body.style.backgroundSize = 'cover'
     document.body.style.backgroundAttachment = 'scroll'
+    document.body.style.minHeight = '100dvh'
   }
   await nextTick()
   updateColors()
@@ -72,7 +73,16 @@ watch(route, async () => {
 <style>
 body {
   margin: 0;
-  background: url("/src/images/PhotoGrid_Site_1770758216069.jpg") left center / cover no-repeat fixed;
+  background: none;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("/src/images/PhotoGrid_Site_1770758216069.jpg") left center / cover no-repeat;
+  background-position: var(--bg-x, left) center;
+  z-index: -1;
 }
 
 #app {
