@@ -64,7 +64,7 @@
 }
 
 body {
-  background: url("/src/images/PhotoGrid_Site_1770758216069.jpg") center / cover no-repeat fixed;
+  background: var(--color-background);
   margin: 0;
   justify-content: center;
   color: var(--color-text);
