@@ -39,7 +39,7 @@ function updateBackgroundScroll() {
 
 onMounted(async () => {
   if (isIOS()) {
-    document.body.style.backgroundSize = 'auto 100dvh'
+    document.body.style.backgroundSize = 'cover'
     document.body.style.backgroundAttachment = 'scroll'
   }
   await nextTick()
